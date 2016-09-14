@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tborychowski/tamtam.git"
+  },
   "author": "Tom",
   "license": "MIT",
   "devDependencies": {
