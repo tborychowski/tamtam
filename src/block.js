@@ -12,9 +12,6 @@ ${el.html || ''}
 
 
 function render (canvas, blocks) {
-	// canvas.innerHTML = DOM.treeToHtml(blocks, renderBlock);
-	console.log(blocks);
-
 	let html = Tree.map(blocks, 'children', item => {
 		if (!item.children) return getBlockHtml(item);
 		return item;

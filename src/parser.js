@@ -1,4 +1,5 @@
 import DOM from './dom-helper';
+import Tree from './tree';
 
 
 function parse (src) {

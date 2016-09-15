@@ -10,6 +10,7 @@ function getAttributes (node) {
 }
 
 function getTextContent (item) {
+	if (!item.childNodes) return '';
 	return Array.from(item.childNodes)
 			.filter(item => item.nodeName === '#text')
 			.map(item => item.textContent)
@@ -28,15 +29,20 @@ function getTree (dom) {
 }
 
 function getBlocks (tree) {
-	return Tree.filter(tree, 'children', item => {
+	const f = Tree.flatten(tree).filter(item => {
 		return item.tag === 'box' || item.tag === 'store';
 	});
+
+	return Tree.deflatten(f);
 }
 
 function getLinks (tree) {
-	return Tree.filter(tree, 'children', item => {
+	const f = Tree.flatten(tree).filter(item => {
 		return item.tag === 'link';
 	});
+
+	// return Tree.deflatten(f);
+	return f;
 }
 
 
