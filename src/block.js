@@ -1,20 +1,37 @@
+import Tree from './tree';
 import Util from './util';
 
 
 
-function renderBlock (el) {
-	return `<div id="${el.id}" class="${el.tag}" style="${Util.getCss(el)}">${el.text || ''}</div>`;
+function getBlockHtml (el) {
+	return `<div id="${el.attrs.id}" class="${el.tag}" style="${Util.getCss(el.attrs)}">
+${el.text || ''}
+${el.html || ''}
+</div>`;
 }
 
 
-function render (blocks) {
-	if (!blocks.length) return renderBlock(blocks);
-	return blocks.map(render).join('');
+function render (canvas, blocks) {
+	// canvas.innerHTML = DOM.treeToHtml(blocks, renderBlock);
+	console.log(blocks);
 
+	let html = Tree.map(blocks, 'children', item => {
+		if (!item.children) return getBlockHtml(item);
+		return item;
+	});
+
+
+	html = Tree.map(html, 'children', item => {
+		if (typeof item !== 'string' && item.children) {
+			item.html = item.children.join('');
+			item = getBlockHtml(item);
+		}
+		return item;
+	});
+
+	canvas.innerHTML = html.join('');
 }
 
 export default {
-	render: (canvas, blocks) => {
-		canvas.innerHTML = render(blocks);
-	}
+	render
 };

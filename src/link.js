@@ -98,13 +98,13 @@ function createRequestLink (src, tar) {
 
 
 function renderLink (link) {
-	var src = document.getElementById(link.src);
-	var tar = document.getElementById(link.target);
+	var src = document.getElementById(link.attrs.src);
+	var tar = document.getElementById(link.attrs.target);
 
 	if (!src || !tar) return;
 
-	if (link.type === 'request') createRequestLink(src, tar);
-	else if (link.type === 'store') createStoreLink(src, tar);
+	if (link.attrs.type === 'request') createRequestLink(src, tar);
+	else if (link.attrs.type === 'store') createStoreLink(src, tar);
 }
 
 

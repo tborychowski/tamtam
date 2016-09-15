@@ -1,5 +1,4 @@
 
-
 function getCss (el) {
 	var css = '';
 	if (el.x) css += 'left: ' + el.x + 'px;';
