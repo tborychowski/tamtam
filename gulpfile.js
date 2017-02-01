@@ -1,10 +1,8 @@
 const gulp = require('gulp');
-const gutil = require('gulp-util');
-const babel = require('gulp-babel');
 const less = require('gulp-less');
 const path = require('path');
 const concat = require('gulp-concat');
-const webpack = require('gulp-webpack');
+const webpack = require('webpack-stream');
 
 
 gulp.task('js', (done) => {
