@@ -17,7 +17,6 @@ function render (canvas, blocks) {
 		return item;
 	});
 
-
 	html = Tree.map(html, 'children', item => {
 		if (typeof item !== 'string' && item.children) {
 			item.html = item.children.join('');

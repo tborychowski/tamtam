@@ -21,7 +21,7 @@ function getTextContent (item) {
 function getTree (dom) {
 	return Tree.map(dom, 'children', item => {
 		return {
-			tag: item.tagName,
+			tag: item.tagName.toLowerCase(),
 			text: getTextContent(item),
 			attrs: getAttributes(item)
 		};

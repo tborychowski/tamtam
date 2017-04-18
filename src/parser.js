@@ -4,15 +4,14 @@ import Tree from './tree';
 
 function parse (src) {
 	const parser = new DOMParser();
-	const xml = parser.parseFromString(`<root>${src}</root>`, 'text/xml');
-
-	if (xml.getElementsByTagName('parsererror').length) {
-		console.error(xml.getElementsByTagName('parsererror'));
+	const html = parser.parseFromString(src, 'text/html');
+	const body = html.body;
+	if (body.getElementsByTagName('parsererror').length) {
+		console.error(body.getElementsByTagName('parsererror'));
 		throw 'error while parsing';
 	}
 
-	const tree = DOM.getTree(xml.childNodes[0].children);
-
+	const tree = DOM.getTree(body.children);
 	return {
 		tree,
 		blocks: DOM.getBlocks(tree),

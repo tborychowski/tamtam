@@ -1,11 +1,14 @@
 
 function getCss (el) {
-	var css = '';
-	if (el.x) css += 'left: ' + el.x + 'px;';
-	if (el.y) css += 'top: ' + el.y + 'px;';
-	if (el.w) css += 'width: ' + el.w + 'px;';
-	if (el.h) css += 'height: ' + el.h + 'px;';
-	return css;
+	const css = [];
+	const bg = (typeof el.shade !== 'undefined' ? '#eee' : '#fff');
+	if (el.x) css.push(`left:${el.x}px;`);
+	if (el.y) css.push(`top:${el.y}px;`);
+	if (el.w) css.push(`width:${el.w}px;`);
+	if (el.h) css.push(`height:${el.h}px;`);
+	css.push(`background-color:${bg};`);
+
+	return css.join(' ');
 }
 
 
